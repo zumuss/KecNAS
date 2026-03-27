@@ -1,0 +1,41 @@
+db.php: veri tabanı bağlantısının olduğu bölüm.
+index.php: Ana Sayfa.
+login.php: Kullanıcı girişi.
+logout.php: Çıkış işlemi.
+register.php: Kullanıcı kaydı.
+upload.php: Dosya yükleme.
+view.php: Yüklenen dosyaları görüntüleme.
+
+
+sql:
+
+CREATE DATABASE nas_system;
+
+USE nas_system;
+
+-- Kullanıcılar tablosu
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+-- Dosyalar tablosu
+CREATE TABLE files (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    filename VARCHAR(255) NOT NULL,
+    filepath VARCHAR(255) NOT NULL,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+
+
+
+
+
+
+
+
+
